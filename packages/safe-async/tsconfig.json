@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "declaration": true,
+      "declarationDir": "lib/types",
+      "esModuleInterop": true,
+      "moduleResolution": "Node",
+      "jsx": "react",
+      "resolveJsonModule": true,
+      "strict": true,
+      "target": "ESNext"
+    },
+    "include": ["index.ts"],
+  }

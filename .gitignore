@@ -1,0 +1,19 @@
+.vscode
+# dependencies
+node_modules
+
+# Documentation
+.docz/
+
+# misc
+.DS_Store
+npm-debug.log*
+
+#tests
+__coverage__
+__snapshots__
+
+# build
+dist
+
+lib
