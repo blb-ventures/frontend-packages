@@ -27,6 +27,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: yarn install --frozen-lockfile --network-timeout 1000000
       - run: yarn --cwd packages/library publish
-      - run: yarn --cdw packages/react-components publish
+      - run: yarn --cwd packages/react-components publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
