@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "packages/library"
+		},
+		{
+			"path": "packages/react-components"
+		},
+		{
+			"path": "packages/react-material-table"
+		},
+		{
+			"path": "packages/react-material-ui"
+		},
+		{
+			"path": "packages/safe-async"
+		},
+		{
+			"path": "packages/styled-components"
+		}
+	],
+	"settings": {}
+}

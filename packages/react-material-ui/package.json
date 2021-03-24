@@ -5,9 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c rollup.config.ts",
-    "postinstall": "yarn build",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "postinstall": "yarn build"
   },
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -18,10 +16,6 @@
     "@material-ui/icons": "^4.11.2",
     "@rollup/plugin-commonjs": "17.1.0",
     "@rollup/plugin-node-resolve": "11.2.0",
-    "@storybook/addon-actions": "^6.1.20",
-    "@storybook/addon-essentials": "^6.1.20",
-    "@storybook/addon-links": "^6.1.20",
-    "@storybook/react": "^6.1.20",
     "@types/event-emitter": "^0.3.3",
     "@types/react-scrollspy": "^3.3.3",
     "babel-loader": "8.2.2",
