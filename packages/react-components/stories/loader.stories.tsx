@@ -1,6 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Loader, LoaderProps } from '@blb-ventures/material-ui/components/loaders/loader';
+import {
+  Loader,
+  LoaderProps,
+} from '@blb-ventures/react-components/components/web/material-ui/loaders/loader';
 
 export default {
   title: 'Example/Loader',

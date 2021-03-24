@@ -1,0 +1,31 @@
+name: Release Packages
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: yarn install --frozen-lockfile --network-timeout 1000000
+      - run: yarn --cwd packages/library build
+      - run: yarn --cwd packages/react-components build
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+          registry-url: https://npm.pkg.github.com/
+      - run: cd packages/library && npm publish
+      - run: cd packages/react-components && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
