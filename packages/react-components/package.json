@@ -1,7 +1,7 @@
 {
   "name": "@blb-ventures/react-components",
   "description": "A set of react components",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "rollup -c rollup.config.ts"
@@ -26,7 +26,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/blb-ventures/frontend-packages.git",
-    "directory": "packages/lib"
+    "directory": "packages/react-components"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "bugs": {
     "url": "https://github.com/blb-ventures/frontend-packages/issues"
