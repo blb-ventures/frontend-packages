@@ -1,4 +1,5 @@
 import { FC, Fragment } from 'react';
+import * as React from 'react';
 
 interface NewlineToBRProps {
   text: string;

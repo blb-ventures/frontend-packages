@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import LazyLoad from 'react-lazyload';
+import * as React from 'react';
 
 interface OwnProps {
   /** Image's source path */
@@ -26,10 +27,6 @@ interface OwnProps {
   trace?: boolean;
   /** Resize an image */
   resize?: boolean;
-  /** Is an amp page */
-  amp?: boolean;
-  /** Amp Image's layout */
-  ampLayout?: 'responsive' | 'fixed';
   /** Custom classNames to put on the outermost tag */
   className?: string;
   zoomOnHover?: boolean;
@@ -49,7 +46,6 @@ export const OptimizedImage: FC<OwnProps> = ({
   width,
   height,
   maxHeight,
-  amp,
   className,
   zoomOnHover,
   lazy,
@@ -73,34 +69,6 @@ export const OptimizedImage: FC<OwnProps> = ({
       // throw new Error('Extension was not provided and not identified in the image source');
       return null;
     }
-  }
-
-  if (amp) {
-    return srcWebp != null ? (
-      <amp-image
-        alt={alt}
-        width={width}
-        height={height}
-        src={props.resize ? srcWebp.src : srcWebp}
-        srcSet={props.resize ? srcWebp.srcSet : null}
-      >
-        <amp-image
-          alt={alt}
-          width={width}
-          height={height}
-          src={props.resize ? src.src : src}
-          srcSet={props.resize ? src.srcSet : null}
-        ></amp-image>
-      </amp-image>
-    ) : (
-      <amp-image
-        alt={alt}
-        width={width}
-        height={height}
-        src={props.resize ? src.src : src}
-        srcSet={props.resize ? src.srcSet : null}
-      ></amp-image>
-    );
   }
 
   if (ext === 'svg') {

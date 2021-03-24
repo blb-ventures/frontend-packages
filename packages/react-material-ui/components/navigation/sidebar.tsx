@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { ScrollspyProps } from 'react-scrollspy';
 import { SmartMenu } from './smart-menu';
-import { MenuRoute } from '@web/modules/common/components/navigation/navigation-interfaces';
+import { MenuRoute } from './navigation-interfaces';
 
 const FixedMenu = styled.nav.attrs((attrs: { menuWidth: number; $sticky?: boolean }) => ({
   menuWidth: attrs.menuWidth || 240,

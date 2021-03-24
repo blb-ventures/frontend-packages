@@ -1,6 +1,6 @@
 import { parse, format } from 'date-fns';
 
-interface FormatOptions {
+export interface FormatOptions {
   parse: string;
   format: string;
   isISO?: boolean;

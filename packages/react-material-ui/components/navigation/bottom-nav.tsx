@@ -11,9 +11,10 @@ import {
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { MenuRoute } from './navigation-interfaces';
-import { iPhoneBottomPadding, UndecoratedLink } from '@web/styles/common';
+import { iPhoneMediaQuery, UndecoratedLink } from '@blb-ventures/styled-components/components';
 import { FC, useMemo, useState } from 'react';
 import Scrollspy from 'react-scrollspy';
+import * as React from 'react';
 
 const CustomBottomNavigation = styled(BottomNavigation)`
   background-color: white;
@@ -28,21 +29,21 @@ const CustomBottomNavigation = styled(BottomNavigation)`
     display: none;
   }
 
-  ${iPhoneBottomPadding(
+  ${iPhoneMediaQuery(
     css`
       & > button {
         padding-bottom: ${props => props.theme.spacing(5)}px;
       }
       height: ${props => props.theme.spacing(11)}px;
-    `,
+    `
   )}
 `;
 
 const CustomList = styled(List)`
-  ${iPhoneBottomPadding(
+  ${iPhoneMediaQuery(
     css`
       padding-bottom: ${props => props.theme.spacing(5)}px;
-    `,
+    `
   )}
 `;
 
@@ -69,9 +70,9 @@ export const BottomNav: FC<BottomNavProps> = ({ showLabel, routes }) => {
         it =>
           it.url === asPath.replace('#', '') ||
           (it.startsWith ? asPath.replace('#', '').startsWith(it.url || '') : false) ||
-          activeScroll === it.url,
+          activeScroll === it.url
       ),
-    [routes, asPath, activeScroll],
+    [routes, asPath, activeScroll]
   );
   // Handlers
   const handleRouteChange = (_: any, newRoute: number) => {

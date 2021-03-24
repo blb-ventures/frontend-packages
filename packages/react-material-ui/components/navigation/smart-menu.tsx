@@ -1,12 +1,12 @@
 import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import dynamic, { DynamicOptions } from 'next/dynamic';
 import * as React from 'react';
 import { ScrollspyProps } from 'react-scrollspy';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { UndecoratedLink } from '@web/styles/common';
-import { MenuRoute } from '@web/modules/common/components/navigation/navigation-interfaces';
+import { UndecoratedLink } from '@blb-ventures/styled-components/components';
+import { MenuRoute } from './navigation-interfaces';
+import ScrollSpy from 'react-scrollspy';
 
 const CustomLinkListItem = styled(ListItem).attrs((attrs: any) => ({ $rounded: attrs.$rounded }))`
   border-radius: ${props =>
@@ -34,9 +34,6 @@ export interface SmartMenuProps {
   afterClick?: () => any;
 }
 
-const defOps: DynamicOptions<any> = { ssr: true };
-const ScrollSpy = dynamic<any>(() => import('react-scrollspy'), defOps);
-
 const handleScrollToEl = (elId: string, onClick?: () => any, afterClick?: () => any) => () => {
   if (onClick) {
     onClick();
@@ -61,17 +58,17 @@ export const SmartMenu: React.FC<SmartMenuProps> = ({
   const activeRoute = React.useMemo(
     () =>
       menuItems.findIndex(
-        it => it.url === asPath || (it.startsWith ? asPath.startsWith(it.url || '') : false),
+        it => it.url === asPath || (it.startsWith ? asPath.startsWith(it.url || '') : false)
       ),
-    [menuItems, asPath],
+    [menuItems, asPath]
   );
-  const ListComponent = scrollSpy != null ? ScrollSpy : List;
+  const ListComponent = scrollSpy != null ? (ScrollSpy as any) : List;
   const listComponentProps = React.useMemo(
     () =>
       scrollSpy != null
         ? { items: menuItems.map(it => it.scrollToEl), ...scrollSpy }
         : { disablePadding: true },
-    [menuItems, scrollSpy],
+    [menuItems, scrollSpy]
   );
   const menu = React.useMemo(
     () =>
@@ -105,7 +102,7 @@ export const SmartMenu: React.FC<SmartMenuProps> = ({
           content
         );
       }),
-    [menuItems, rounded, afterClick, activeRoute, hasDivider],
+    [menuItems, rounded, afterClick, activeRoute, hasDivider]
   );
   return <ListComponent {...listComponentProps}>{menu}</ListComponent>;
 };
