@@ -1,6 +1,6 @@
 {
   "name": "@blb-ventures/styled-components",
-  "description": "Zerosoft's util functions",
+  "description": "A set of commonly used styled-components",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "@blb-ventures/safe-async",
-  "description": "Zerosoft's util functions",
+  "description": "A feedback util function for promises",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {

@@ -14,6 +14,5 @@ export const formatNumber = (
   return value.toLocaleString('pt-BR', {
     maximumFractionDigits: maxDecimal,
     minimumFractionDigits: minDecimal,
-    currency: 'BRL',
   });
 };

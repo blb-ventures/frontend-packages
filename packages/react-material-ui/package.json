@@ -1,6 +1,6 @@
 {
-  "name": "@blb-ventures/material-ui",
-  "description": "Zerosoft's util functions",
+  "name": "@blb-ventures/react-material-ui",
+  "description": "A set of components using React Material UI",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {

@@ -4,7 +4,7 @@ import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
 
 export default {
-  input: 'hooks/index.ts',
+  input: 'components/index.ts',
   output: [
     {
       file: pkg.main,
