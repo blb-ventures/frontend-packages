@@ -15,6 +15,7 @@ export default {
       format: 'es',
     },
   ],
+  external: ['date-fns', 'dayjs', '@blb-ventures/react-components'],
   plugins: [
     resolve(),
     commonjs(),

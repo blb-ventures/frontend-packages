@@ -11,7 +11,7 @@ import {
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { MenuRoute } from './navigation-interfaces';
-import { iPhoneMediaQuery, UndecoratedLink } from '@blb-ventures/styled-components/components';
+import { UndecoratedLink, iPhoneMediaQuery } from '../../styled-components';
 import { FC, useMemo, useState } from 'react';
 import Scrollspy from 'react-scrollspy';
 import * as React from 'react';

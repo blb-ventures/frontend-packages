@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c rollup.config.ts",
-    "postinstall": "yarn build"
+    "build": "rollup -c rollup.config.ts"
   },
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -37,6 +36,11 @@
     }
   ],
   "peerDependencies": {
+    "date-fns": "^2.19.0",
+    "dayjs": "^1.10.4"
+  },
+  "dependencies": {
+    "date-fns": "^2.19.0",
     "dayjs": "^1.10.4"
   }
 }

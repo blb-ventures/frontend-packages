@@ -1,1 +1,1 @@
-export * from './iugu';
+export { iugu } from './iugu';

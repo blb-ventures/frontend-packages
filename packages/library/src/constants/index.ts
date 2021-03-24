@@ -1,1 +1,1 @@
-export * from './states';
+export { states } from './states';

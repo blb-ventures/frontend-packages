@@ -1,12 +1,11 @@
 import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
-import { ScrollspyProps } from 'react-scrollspy';
+import ScrollSpy, { ScrollspyProps } from 'react-scrollspy';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { UndecoratedLink } from '@blb-ventures/styled-components/components';
+import { UndecoratedLink } from '../../styled-components';
 import { MenuRoute } from './navigation-interfaces';
-import ScrollSpy from 'react-scrollspy';
 
 const CustomLinkListItem = styled(ListItem).attrs((attrs: any) => ({ $rounded: attrs.$rounded }))`
   border-radius: ${props =>

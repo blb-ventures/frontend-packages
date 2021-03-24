@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { UndecoratedLink } from '@blb-ventures/styled-components';
+import { UndecoratedLink } from '../styled-components';
 import { isExternal } from '@blb-ventures/library';
 import * as React from 'react';
 

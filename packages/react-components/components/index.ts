@@ -1,2 +1,1 @@
-export * from './newline-to-br';
-export * from './optimized-image';
+export * from './web';
