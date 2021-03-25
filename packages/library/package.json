@@ -1,7 +1,7 @@
 {
   "name": "@blb-ventures/library",
   "description": "A set of util functions",
-  "version": "0.1.2",
+  "version": "0.1.9",
   "license": "MIT",
   "scripts": {
     "build": "bili",
