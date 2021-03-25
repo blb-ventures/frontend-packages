@@ -10,6 +10,7 @@ const configuration: Configuration = {
     '@blb-ventures/library',
     '@date-io/core',
     /@material-ui*/,
+    'brazilian-values',
     'dayjs',
     'event-emitter',
     'jspdf',
