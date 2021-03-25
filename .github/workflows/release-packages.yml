@@ -5,19 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - run: yarn install --frozen-lockfile --network-timeout 1000000
-      - run: yarn --cwd packages/library build
-      - run: yarn --cwd packages/react-components build
-
-  publish-gpr:
-    needs: build
+  publish-library:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,8 +13,22 @@ jobs:
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
-      - run: yarn install --frozen-lockfile --network-timeout 1000000
-      - run: yarn --cwd packages/library publish
-      - run: yarn --cwd packages/react-components publish
+          scope: '@blbventures'
+      - run: yarn --cwd packages/library install --frozen-lockfile --network-timeout 1000000
+      - run: yarn --cwd packages/library build
+      - run: yarn --cwd packages/library publish --access public
+
+  publish-react-components:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+          registry-url: https://npm.pkg.github.com/
+          scope: '@blbventures'
+      - run: yarn --cwd packages/react-components install --frozen-lockfile --network-timeout 1000000
+      - run: yarn --cwd packages/react-components build
+      - run: yarn --cwd packages/react-components publish --access public
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
