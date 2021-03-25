@@ -52,10 +52,6 @@ module.exports = {
         alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
         project: path.resolve(__dirname, './tsconfig.json'),
       },
-      node: {
-        paths: ['src', '../library/src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
     },
   },
   rules: {
@@ -234,5 +230,6 @@ module.exports = {
     // ],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
+    'import/no-unresolved': 'off',
   },
 };
