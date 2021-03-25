@@ -4,17 +4,21 @@
   "version": "0.1.2",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c rollup.config.ts"
+    "build": "bili"
   },
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/types",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types",
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@babel/core": "7.13.1",
     "@rollup/plugin-commonjs": "17.1.0",
     "@rollup/plugin-node-resolve": "11.2.0",
     "babel-loader": "8.2.2",
     "babel-preset-react-app": "10.0.0",
+    "bili": "^5.0.5",
     "dayjs": "^1.10.4",
     "rollup": "2.40.0",
     "rollup-plugin-typescript2": "0.30.0",
