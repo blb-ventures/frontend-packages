@@ -53,7 +53,7 @@ module.exports = {
         project: path.resolve(__dirname, './tsconfig.json'),
       },
       node: {
-        paths: ['src'],
+        paths: ['src', '../library/src'],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
