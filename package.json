@@ -35,6 +35,10 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-packages": "yarn --cwd packages/library build && yarn --cwd packages/react-components build",
+    "lint-packages": "yarn --cwd packages/library lint && yarn --cwd packages/react-components lint",
+    "test-packages": "yarn --cwd packages/library test && yarn --cwd packages/react-components test",
+    "publish-packages": "yarn --cwd packages/library publish --access public && yarn --cwd packages/react-components publish --access public"
   }
 }

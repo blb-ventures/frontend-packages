@@ -4,7 +4,9 @@
   "version": "0.1.2",
   "license": "MIT",
   "scripts": {
-    "build": "bili"
+    "build": "bili",
+    "test": "echo 1",
+    "lint": "eslint -c .eslintrc.js --fix --ext .ts ./src"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
