@@ -12,10 +12,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: yarn install --frozen-lockfile --network-timeout 1000000
-      - run: yarn lint-packages
-      - run: yarn test-packages
-      - run: yarn build-packages
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --network-timeout 1000000
+      - name: Lint packages
+        run: yarn lint-packages
+      - name: Test packages
+        run: yarn test-packages
+      - name: Build packages
+        run: yarn build-packages
 
   publish-gpr:
     needs: build
@@ -26,7 +30,8 @@ jobs:
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
-          scope: '@blbventures'
-      - run: yarn publish-packages
+          scope: '@blb-ventures'
+      - name: Publish Packages
+        run: yarn publish-packages
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
