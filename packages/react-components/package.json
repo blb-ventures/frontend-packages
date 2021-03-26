@@ -1,7 +1,7 @@
 {
   "name": "@blb-ventures/react-components",
   "description": "A set of react components",
-  "version": "0.1.10",
+  "version": "0.1.12",
   "license": "MIT",
   "scripts": {
     "build": "bili",
@@ -10,7 +10,7 @@
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist/types",
+  "types": "dist",
   "files": [
     "dist"
   ],
@@ -68,7 +68,8 @@
     "@material-ui/icons": "^4.11.2",
     "event-emitter": "^0.3.5",
     "next": "^10.0.7",
-    "react": "^17.0.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "styled-components": "^5.2.1"
   }
 }
