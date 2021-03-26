@@ -1,7 +1,7 @@
 {
   "name": "@blb-ventures/library",
   "description": "A set of util functions",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "license": "MIT",
   "scripts": {
     "build": "bili",
@@ -21,6 +21,7 @@
     "babel-loader": "8.2.2",
     "babel-preset-react-app": "10.0.0",
     "bili": "^5.0.5",
+    "date-fns": "^2.19.0",
     "dayjs": "^1.10.4",
     "rollup": "2.40.0",
     "rollup-plugin-typescript2": "0.30.0",
@@ -43,13 +44,5 @@
       "email": "eduardo.ciciliato@gmail.com",
       "url": "https://github.com/edusig"
     }
-  ],
-  "peerDependencies": {
-    "date-fns": "^2.19.0",
-    "dayjs": "^1.10.4"
-  },
-  "dependencies": {
-    "date-fns": "^2.19.0",
-    "dayjs": "^1.10.4"
-  }
+  ]
 }

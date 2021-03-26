@@ -1,7 +1,7 @@
 {
   "name": "@blb-ventures/react-components",
   "description": "A set of react components",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "license": "MIT",
   "scripts": {
     "build": "bili",
@@ -26,7 +26,23 @@
     "babel-preset-react-app": "10.0.0",
     "rollup": "2.40.0",
     "rollup-plugin-typescript2": "0.30.0",
-    "typescript": "4.2.2"
+    "typescript": "4.2.2",
+    "@date-io/core": "^2.10.7",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/pickers": "^3.3.10",
+    "dayjs": "^1.10.4",
+    "event-emitter": "^0.3.5",
+    "jspdf": "^2.3.0",
+    "material-table": "^1.69.2",
+    "moment": "^2.29.1",
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-is": "^17.0.2",
+    "react-lazyload": "^3.2.0",
+    "react-scrollspy": "^3.4.3",
+    "styled-components": "^5.2.1"
   },
   "repository": {
     "type": "git",
@@ -47,42 +63,11 @@
     }
   ],
   "peerDependencies": {
-    "@date-io/core": "^2.10.7",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/pickers": "^3.3.10",
-    "brazilian-values": "^0.10.1",
-    "dayjs": "^1.10.4",
     "event-emitter": "^0.3.5",
-    "jspdf": "^2.3.0",
-    "material-table": "^1.69.2",
-    "moment": "^2.29.1",
     "next": "^10.0.7",
     "react": "^17.0.1",
-    "react-beautiful-dnd": "^13.1.0",
-    "react-dom": "^17.0.1",
-    "react-is": "^17.0.2",
-    "react-lazyload": "^3.2.0",
-    "react-scrollspy": "^3.4.3",
-    "styled-components": "^5.2.1"
-  },
-  "dependencies": {
-    "@date-io/core": "^2.10.7",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/pickers": "^3.3.10",
-    "brazilian-values": "^0.10.1",
-    "dayjs": "^1.10.4",
-    "event-emitter": "^0.3.5",
-    "jspdf": "^2.3.0",
-    "material-table": "^1.69.2",
-    "moment": "^2.29.1",
-    "next": "^10.0.7",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-is": "^17.0.2",
-    "react-lazyload": "^3.2.0",
-    "react-scrollspy": "^3.4.3",
     "styled-components": "^5.2.1"
   }
 }
