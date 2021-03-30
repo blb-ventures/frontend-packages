@@ -22,7 +22,14 @@ jobs:
         run: yarn test-packages
       - name: Build packages
         run: yarn build-packages
-      - name: Publish Packages
-        run: yarn publish-packages
+      - name: Get Version
+        id: get_version
+        uses: battila7/get-version-action@v2
+      - name: Publish Library
+        run: yarn --cwd packages/library publish --access public --tag ${{ steps.get_version.outputs.version-without-v }}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Publish React Components
+        run: yarn --cwd packages/react-components publish --access public --tag ${{ steps.get_version.outputs.version-without-v }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
