@@ -4,6 +4,7 @@ export interface FormatOptions {
   parse: string;
   format: string;
   isISO?: boolean;
+  locale?: any;
 }
 
 const defaultOps: FormatOptions = {
@@ -23,7 +24,7 @@ export const formatDate = (value?: string | Date, ops: Partial<FormatOptions> = 
         ? new Date(value)
         : parse(value, options.parse, new Date())
       : value;
-  return format(date, options.format);
+  return format(date, options.format, { locale: options.locale });
 };
 
 const defaultTimeOps: FormatOptions = {
