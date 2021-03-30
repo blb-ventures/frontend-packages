@@ -13,7 +13,10 @@ const defaultOps: FormatOptions = {
   isISO: false,
 };
 
-export const formatDate = (value?: string | Date, ops: Partial<FormatOptions> = {}): string => {
+export const formatDate = (
+  value?: string | Date | null | undefined,
+  ops: Partial<FormatOptions> = {}
+): string => {
   if (value == null) {
     return '';
   }
