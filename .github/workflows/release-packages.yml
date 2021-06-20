@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,8 +18,6 @@ jobs:
         run: yarn lint-packages
       - name: Test packages
         run: yarn test-packages
-      - name: Build packages
-        run: yarn build-packages
 
   publish-gpr:
     needs: build
@@ -31,6 +29,8 @@ jobs:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
           scope: '@blb-ventures'
+      - name: Build packages
+        run: yarn build-packages
       - name: Publish Packages
         run: yarn publish-packages
         env:

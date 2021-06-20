@@ -1,7 +1,7 @@
 {
   "name": "@blb-ventures/react-components",
   "description": "A set of react components",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "license": "MIT",
   "scripts": {
     "build": "bili",
@@ -15,35 +15,35 @@
     "dist"
   ],
   "devDependencies": {
-    "@babel/core": "7.13.1",
-    "@date-io/core": "^2.10.7",
-    "@material-ui/core": "^4.11.3",
+    "@babel/core": "7.14.6",
+    "@date-io/core": "^2.10.11",
+    "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/pickers": "^3.3.10",
-    "@rollup/plugin-commonjs": "17.1.0",
-    "@rollup/plugin-node-resolve": "11.2.0",
+    "@rollup/plugin-commonjs": "19.0.0",
+    "@rollup/plugin-node-resolve": "13.0.0",
     "@types/event-emitter": "^0.3.3",
     "@types/react-lazyload": "^3.1.0",
     "@types/react-scrollspy": "^3.3.3",
-    "@types/styled-components": "^5.1.7",
+    "@types/styled-components": "^5.1.10",
     "babel-loader": "8.2.2",
     "babel-preset-react-app": "10.0.0",
     "brazilian-values": "^0.10.1",
-    "dayjs": "^1.10.4",
+    "dayjs": "^1.10.5",
     "event-emitter": "^0.3.5",
-    "jspdf": "^2.3.0",
-    "material-table": "^1.69.2",
+    "jspdf": "^2.3.1",
+    "material-table": "^1.69.3",
     "moment": "^2.29.1",
-    "next": "^10.0.7",
+    "next": "^11.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.2",
     "react-lazyload": "^3.2.0",
     "react-scrollspy": "^3.4.3",
-    "rollup": "2.40.0",
+    "rollup": "2.52.1",
     "rollup-plugin-typescript2": "0.30.0",
-    "styled-components": "^5.2.1",
-    "typescript": "4.2.2"
+    "styled-components": "^5.3.0",
+    "typescript": "4.3.4"
   },
   "repository": {
     "type": "git",
@@ -64,12 +64,12 @@
     }
   ],
   "peerDependencies": {
-    "@material-ui/core": "^4.11.3",
+    "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "event-emitter": "^0.3.5",
-    "next": "^10.0.7",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "styled-components": "^5.2.1"
+    "next": "^11.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0"
   }
 }
