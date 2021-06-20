@@ -4,6 +4,7 @@ export interface FormatOptions {
   parse: string;
   format: string;
   isISO?: boolean;
+  locale?: any;
 }
 
 const defaultOps: FormatOptions = {
@@ -12,7 +13,10 @@ const defaultOps: FormatOptions = {
   isISO: false,
 };
 
-export const formatDate = (value?: string | Date, ops: Partial<FormatOptions> = {}): string => {
+export const formatDate = (
+  value?: string | Date | null | undefined,
+  ops: Partial<FormatOptions> = {}
+): string => {
   if (value == null) {
     return '';
   }
@@ -23,7 +27,7 @@ export const formatDate = (value?: string | Date, ops: Partial<FormatOptions> = 
         ? new Date(value)
         : parse(value, options.parse, new Date())
       : value;
-  return format(date, options.format);
+  return format(date, options.format, { locale: options.locale });
 };
 
 const defaultTimeOps: FormatOptions = {

@@ -5,19 +5,26 @@ on:
     types: [created]
 
 jobs:
+<<<<<<< HEAD
   test:
+=======
+  release:
+>>>>>>> 6c6e3a1be4a2866079c47088b533bdc278e5963d
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 14
+          registry-url: https://npm.pkg.github.com/
+          scope: '@blb-ventures'
       - name: Install dependencies
         run: yarn install --frozen-lockfile --network-timeout 1000000
       - name: Lint packages
         run: yarn lint-packages
       - name: Test packages
         run: yarn test-packages
+<<<<<<< HEAD
 
   publish-gpr:
     needs: build
@@ -33,5 +40,18 @@ jobs:
         run: yarn build-packages
       - name: Publish Packages
         run: yarn publish-packages
+=======
+      - name: Build packages
+        run: yarn build-packages
+      - name: Get Version
+        id: get_version
+        uses: battila7/get-version-action@v2
+      - name: Publish Library
+        run: yarn --cwd packages/library publish --access public --tag ${{ steps.get_version.outputs.version-without-v }}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Publish React Components
+        run: yarn --cwd packages/react-components publish --access public --tag ${{ steps.get_version.outputs.version-without-v }}
+>>>>>>> 6c6e3a1be4a2866079c47088b533bdc278e5963d
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
