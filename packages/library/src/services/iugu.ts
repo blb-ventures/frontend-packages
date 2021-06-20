@@ -38,6 +38,7 @@ interface PaymentTokenResponse extends BaseResponse {
   };
 }
 
+const apiURL = 'https://api.iugu.com';
 class Iugu {
   static instance: Iugu;
 
@@ -49,7 +50,6 @@ class Iugu {
   }
 
   accountID: string;
-  apiURL = 'https://api.iugu.com';
 
   constructor(accountID: string) {
     this.accountID = accountID;
@@ -62,7 +62,7 @@ class Iugu {
     const headers = options?.headers != null ? (options.headers as Headers) : new Headers();
     headers.append('Content-type', 'application/json');
     try {
-      const res = await fetch(this.apiURL + url, { mode: 'cors', ...options });
+      const res = await fetch(apiURL + url, { mode: 'cors', ...options });
       const data = await res.json();
       return { data: { api: data } } as T;
     } catch (e) {
