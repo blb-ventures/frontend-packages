@@ -1,38 +1,38 @@
-import { TransitionProps } from '@material-ui/core/transitions/transition';
+import { TransitionProps } from '@mui/material/transitions/transition';
 import {
   Slide,
   SnackbarContent,
   Snackbar as MUISnackbar,
   Box,
   SnackbarOrigin,
-} from '@material-ui/core';
-import styled from 'styled-components';
-import DoneIcon from '@material-ui/icons/Done';
-import ErrorIcon from '@material-ui/icons/Error';
+} from '@mui/material';
+import styled from '@emotion/styled';
+import DoneIcon from '@mui/icons-material/Done';
+import ErrorIcon from '@mui/icons-material/Error';
 import * as React from 'react';
 
 const SlideTransition = (props: TransitionProps) => {
   return <Slide {...props} direction="up" />;
 };
 
+type Status = 'default' | 'success' | 'information' | 'danger';
+
 interface OwnProps {
   open: boolean;
   autoHideDuration?: number;
   message: string | React.ReactNode;
-  type?: 'default' | 'success' | 'information' | 'danger';
+  type?: Status;
   onClose: () => void;
 }
 
-const SnackbarContainer = styled.div.attrs((attrs: any) => ({
-  contentType: attrs.contentType || 'default',
-}))`
+const SnackbarContainer = styled.div<{ status: Status }>`
   .MuiSnackbarContent-root {
     background-color: ${props =>
-      props.contentType === 'success'
+      props.status === 'success'
         ? '#4caf50'
-        : props.contentType === 'information'
+        : props.status === 'information'
         ? '#12b9b0'
-        : props.contentType === 'danger'
+        : props.status === 'danger'
         ? '#ff4444'
         : 'rgb(49, 49, 49)'} !important;
   }
@@ -54,7 +54,7 @@ export const Snackbar: React.FC<OwnProps> = ({
   type = 'default',
   onClose,
 }) => (
-  <SnackbarContainer contentType={type}>
+  <SnackbarContainer status={type}>
     <MUISnackbar
       anchorOrigin={anchor}
       open={open}

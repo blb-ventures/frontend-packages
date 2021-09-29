@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { UrlAction } from './url-action';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import * as React from 'react';
 
 const ActionButton = styled.div`

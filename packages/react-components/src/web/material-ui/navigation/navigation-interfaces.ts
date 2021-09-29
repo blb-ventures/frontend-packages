@@ -1,16 +1,23 @@
-import * as React from 'react';
+import { TypographyProps } from '@mui/material';
+import { MouseEvent, ReactNode } from 'react';
+import { UrlObject } from 'url';
 
 export interface MenuRoute {
-  url?: string;
+  url?: string | UrlObject;
   label?: string;
-  icon?: React.ReactNode;
+  labelProps?: TypographyProps;
+  subtitle?: string;
+  icon?: ReactNode;
   startsWith?: boolean;
   external?: boolean;
-  subroutes?: MenuRoute[];
+  subRoutes?: MenuRoute[];
   disabled?: boolean;
-
+  endIcon?: {
+    icon: ReactNode;
+    onClick?: () => unknown;
+  };
   scrollToEl?: string;
-  onClick?: () => any;
+  onClick?: (e: MouseEvent) => any;
   divider?: boolean;
   active?: boolean;
   hide?: (data: any) => boolean | boolean;

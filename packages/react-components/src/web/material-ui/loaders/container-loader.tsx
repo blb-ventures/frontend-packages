@@ -1,5 +1,5 @@
-import CircularProgress from '@material-ui/core/CircularProgress';
-import styled from 'styled-components';
+import CircularProgress from '@mui/material/CircularProgress';
+import styled from '@emotion/styled';
 import * as React from 'react';
 
 interface OwnProps {
@@ -14,9 +14,7 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const Loader = styled.div.attrs((props: any) => ({
-  show: props.show,
-}))`
+const Loader = styled.div<{ show: boolean }>`
   width: 100%;
   height: 100%;
   position: absolute;

@@ -23,7 +23,7 @@ const configuration: Configuration = {
     'react-is',
     'react-lazyload',
     'react-scrollspy',
-    'styled-components',
+    '@emotion/styled',
   ],
   // plugins: {
   //   typescript2: {

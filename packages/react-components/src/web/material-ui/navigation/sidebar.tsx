@@ -1,18 +1,14 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { ScrollspyProps } from 'react-scrollspy';
+import styled from '@emotion/styled';
 import { SmartMenu } from './smart-menu';
 import { MenuRoute } from './navigation-interfaces';
 
-const FixedMenu = styled.nav.attrs((attrs: { menuWidth: number; $sticky?: boolean }) => ({
-  menuWidth: attrs.menuWidth || 240,
-  $sticky: attrs.$sticky,
-}))`
+const FixedMenu = styled.nav<{ menuWidth?: number; $sticky?: boolean }>`
   position: ${props => (props.$sticky ? 'sticky' : 'fixed')};
   top: ${props => props.theme.spacing(8)}px;
   left: 0;
 
-  width: ${props => props.menuWidth}px;
+  width: ${props => props.menuWidth ?? 240}px;
   height: 100%;
 
   padding-top: ${props => props.theme.spacing(4)}px;
@@ -31,25 +27,20 @@ const FixedMenu = styled.nav.attrs((attrs: { menuWidth: number; $sticky?: boolea
   }
 `;
 
-const ContentWrapper = styled.main.attrs((attrs: { menuWidth: number; $sticky?: boolean }) => ({
-  menuWidth: attrs.menuWidth || 240,
-  $sticky: attrs.$sticky,
-}))`
+const ContentWrapper = styled.main<{ menuWidth?: number; $sticky?: boolean }>`
   flex: ${props => (props.$sticky ? 1 : 'none')};
   ${props => props.theme.breakpoints.up('md')} {
-    margin-left: ${props => (props.$sticky ? 0 : props.menuWidth)}px;
+    margin-left: ${props => (props.$sticky ? 0 : props.menuWidth ?? 240)}px;
   }
 `;
 
-const ContentContainer = styled.div.attrs((attrs: { menuWidth: number }) => ({
-  menuWidth: attrs.menuWidth || 240,
-}))`
+const ContentContainer = styled.div<{ menuWidth?: number; $sticky?: boolean }>`
   box-sizing: content-box;
   max-width: 690px;
   margin: 0 auto;
   padding: ${props => props.theme.spacing(0, 2)};
   ${props => props.theme.breakpoints.up('md')} {
-    max-width: ${props => props.menuWidth + 960}px;
+    max-width: ${props => (props.menuWidth ?? 240) + 960}px;
   }
 `;
 
@@ -60,14 +51,12 @@ const MaxWidthContainer = styled.div`
 interface SidebarProps {
   menuItems: MenuRoute[];
   menuWidth: number;
-  scrollSpy?: Partial<ScrollspyProps>;
   sticky?: boolean;
   className?: string;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
   menuItems,
-  scrollSpy,
   children,
   sticky,
   menuWidth,
@@ -76,7 +65,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <div className={className}>
       <FixedMenu $sticky={sticky} menuWidth={menuWidth}>
-        <SmartMenu scrollSpy={scrollSpy} menuItems={menuItems} rounded />
+        <SmartMenu menuItems={menuItems} rounded />
       </FixedMenu>
       <ContentWrapper $sticky={sticky} menuWidth={menuWidth}>
         <ContentContainer menuWidth={menuWidth}>

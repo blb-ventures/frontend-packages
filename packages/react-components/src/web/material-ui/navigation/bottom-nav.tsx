@@ -1,53 +1,35 @@
-import styled, { css } from 'styled-components';
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { MenuRoute } from './navigation-interfaces';
-import { UndecoratedLink, iPhoneMediaQuery } from '../../styled-components';
-import { FC, useMemo, useState } from 'react';
-import Scrollspy from 'react-scrollspy';
 import * as React from 'react';
+import { BottomNavigation, BottomNavigationAction, Drawer, List } from '@mui/material';
+import { useRouter } from 'next/router';
+import { FC, useMemo, useState } from 'react';
+import styled from 'styled-components';
+import { SmartMenu } from './smart-menu';
+import { MenuRoute } from './navigation-interfaces';
 
-const CustomBottomNavigation = styled(BottomNavigation)`
+const StyledBottomNavigation = styled(BottomNavigation)`
   background-color: white;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0px -2px 4px -1px rgba(0, 0, 0, 0.2), 0px -4px 5px 0px rgba(0, 0, 0, 0.14),
-    0px -1px 10px 0px rgba(0, 0, 0, 0.12);
-  z-index: 800;
-  ${(props: any) => props.theme.breakpoints.up('md')} {
+  width: 100%;
+  box-shadow: none;
+  height: calc(${props => props.theme.spacing(8)}px + env(safe-area-inset-bottom, 0));
+  &[data-has-shadow='1'] {
+    box-shadow: 0px -2px 4px -1px rgba(0, 0, 0, 0.2), 0px -4px 5px 0px rgba(0, 0, 0, 0.14),
+      0px -1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+  ${props => props.theme.breakpoints.up('md')} {
     display: none;
   }
 
-  ${iPhoneMediaQuery(
-    css`
-      & > button {
-        padding-bottom: ${props => props.theme.spacing(5)}px;
-      }
-      height: ${props => props.theme.spacing(11)}px;
-    `
-  )}
+  & > button {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    min-width: 60px;
+  }
 `;
 
-const CustomList = styled(List)`
-  ${iPhoneMediaQuery(
-    css`
-      padding-bottom: ${props => props.theme.spacing(5)}px;
-    `
-  )}
+const StyledList = styled(List)`
+  padding-bottom: env(safe-area-inset-bottom, 0);
 `;
 
-const CustomBottomNavigationAction = styled(BottomNavigationAction)`
+const StyledBottomNavigationAction = styled(BottomNavigationAction)`
   &.Mui-selected path {
     fill: ${props => props.theme.palette.primary.main} !important;
   }
@@ -55,81 +37,72 @@ const CustomBottomNavigationAction = styled(BottomNavigationAction)`
 
 interface BottomNavProps {
   showLabel?: boolean;
+  hasShadow?: boolean;
   routes: MenuRoute[];
 }
 
-export const BottomNav: FC<BottomNavProps> = ({ showLabel, routes }) => {
+export const BottomNav: FC<BottomNavProps> = ({ showLabel, hasShadow = true, routes }) => {
   const { asPath, push } = useRouter();
+
   // States
-  const [selectedSubroutes, setSelectedSubroutes] = useState<MenuRoute[] | undefined>();
-  const [activeScroll, setActiveScroll] = useState('');
+  const [selectedSubRoutes, setSelectedSubRoutes] = useState<MenuRoute[] | undefined>();
   // Memos
   const activeRoute = useMemo(
     () =>
       routes.findIndex(
         it =>
           it.url === asPath.replace('#', '') ||
-          (it.startsWith ? asPath.replace('#', '').startsWith(it.url || '') : false) ||
-          activeScroll === it.url
+          (it.startsWith
+            ? asPath
+                .replace('#', '')
+                .startsWith(
+                  it.url != null
+                    ? typeof it.url === 'string'
+                      ? it.url
+                      : it.url.pathname || ''
+                    : ''
+                )
+            : false)
       ),
-    [routes, asPath, activeScroll]
+    [routes, asPath]
   );
   // Handlers
   const handleRouteChange = (_: any, newRoute: number) => {
     const route = routes[newRoute];
-    if (route.subroutes != null) {
-      setSelectedSubroutes(route.subroutes);
+    if (route.subRoutes != null) {
+      setSelectedSubRoutes(route.subRoutes);
     } else if (typeof window !== 'undefined' && route.external) {
       window.location = (route.url || '') as any;
-    } else {
+    } else if (routes[newRoute].url) {
       push(routes[newRoute].url || '');
     }
   };
+
   return (
     <>
-      <Scrollspy
-        items={(routes || []).filter(it => it.url != null).map(it => it.url!.replace('/#', ''))}
-        onUpdate={(el: any) => setActiveScroll(el != null ? `/#${el.id}` : '')}
-        currentClassName="active"
-      />
-      <CustomBottomNavigation value={activeRoute} onChange={handleRouteChange}>
+      <StyledBottomNavigation
+        value={activeRoute}
+        onChange={handleRouteChange}
+        data-has-shadow={hasShadow ? 1 : 0}
+      >
         {routes.map((it, idx) => (
-          <CustomBottomNavigationAction
+          <StyledBottomNavigationAction
             key={idx}
             icon={it.icon}
             label={showLabel ? it.label : undefined}
+            onClick={it.onClick}
             showLabel
           />
         ))}
-      </CustomBottomNavigation>
+      </StyledBottomNavigation>
       <Drawer
-        open={selectedSubroutes != null}
+        open={selectedSubRoutes != null}
         anchor="bottom"
-        onClose={() => setSelectedSubroutes(undefined)}
+        onClose={() => setSelectedSubRoutes(undefined)}
       >
-        <CustomList>
-          {selectedSubroutes
-            ?.filter(it => !it.divider)
-            .map((it, idx) => {
-              const content = (
-                <ListItem key={idx} button onClick={it.onClick}>
-                  <ListItemIcon>{it.icon}</ListItemIcon>
-                  <ListItemText primary={it.label} />
-                </ListItem>
-              );
-              return it.external ? (
-                <UndecoratedLink href={it.url || ''} key={`link-${idx}`}>
-                  {content}
-                </UndecoratedLink>
-              ) : it.url ? (
-                <Link href={it.url || ''} passHref key={`link-${idx}`}>
-                  <UndecoratedLink>{content}</UndecoratedLink>
-                </Link>
-              ) : (
-                content
-              );
-            })}
-        </CustomList>
+        <StyledList>
+          <SmartMenu menuItems={selectedSubRoutes || []} />
+        </StyledList>
       </Drawer>
     </>
   );

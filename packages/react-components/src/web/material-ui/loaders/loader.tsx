@@ -1,11 +1,9 @@
-import CircularProgress from '@material-ui/core/CircularProgress';
-import styled from 'styled-components';
+import CircularProgress from '@mui/material/CircularProgress';
+import styled from '@emotion/styled';
 import * as React from 'react';
 
-const LoaderContainer = styled.div.attrs((props: any) => ({
-  position: props.position || 'fixed',
-}))`
-  position: ${props => props.position};
+const LoaderContainer = styled.div<{ position?: string }>`
+  position: ${props => props.position ?? 'fixed'};
   top: 0;
   left: 0;
   width: 100%;
