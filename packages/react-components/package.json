@@ -1,7 +1,7 @@
 {
   "name": "@blb-ventures/react-components",
   "description": "A set of react components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "build": "bili",
