@@ -132,7 +132,7 @@ export const SmartMenu: FC<SmartMenuProps> = ({
           it.url != null ? (
             // eslint-disable-next-line react/no-array-index-key
             <NextLink key={idx} href={it.url} passHref>
-              <Link underline="none" target={it.external ? '_blank' : undefined}>
+              <Link color="inherit" underline="none" target={it.external ? '_blank' : undefined}>
                 {content}
               </Link>
             </NextLink>
