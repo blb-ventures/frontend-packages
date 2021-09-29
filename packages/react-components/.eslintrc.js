@@ -22,6 +22,7 @@ module.exports = {
     project: tsconfigPath,
     ecmaVersion: 6,
     ecmaFeatures: {
+      jsx: true,
       generators: false,
       objectLiteralDuplicateProperties: false,
     },
