@@ -28,7 +28,7 @@ const Loader = styled.div<{ show: boolean }>`
 `;
 
 const LoadingMessage = styled.div`
-  margin-top: ${props => props.theme.spacing(2)}px;
+  margin-top: ${props => props.theme.spacing(2)};
 `;
 
 /** A container with a loader inside */

@@ -21,7 +21,7 @@ import { MenuRoute } from './navigation-interfaces';
 
 const StyledLinkListItem = styled(ListItem)`
   &[data-rounded='1'] {
-    border-radius: 0 ${props => props.theme.spacing(4)}px ${props => props.theme.spacing(4)}px 0;
+    border-radius: 0 ${props => props.theme.spacing(4)} ${props => props.theme.spacing(4)} 0;
   }
   &.menu-active {
     path {
@@ -49,20 +49,22 @@ export interface SmartMenuProps extends ListProps {
   afterClick?: () => any;
 }
 
-const handleScrollToEl =
-  (elId: string, onClick?: (e: MouseEvent) => void, afterClick?: (e: MouseEvent) => void) =>
-  (e: MouseEvent) => {
-    if (onClick) {
-      onClick(e);
-    }
-    const el = document.getElementById(elId);
-    if (el != null) {
-      window.scrollTo({ behavior: 'smooth', top: el.offsetTop - 80 });
-    }
-    if (afterClick) {
-      afterClick(e);
-    }
-  };
+const handleScrollToEl = (
+  elId: string,
+  onClick?: (e: MouseEvent) => void,
+  afterClick?: (e: MouseEvent) => void
+) => (e: MouseEvent) => {
+  if (onClick) {
+    onClick(e);
+  }
+  const el = document.getElementById(elId);
+  if (el != null) {
+    window.scrollTo({ behavior: 'smooth', top: el.offsetTop - 80 });
+  }
+  if (afterClick) {
+    afterClick(e);
+  }
+};
 
 export const SmartMenu: FC<SmartMenuProps> = ({
   hasDivider,

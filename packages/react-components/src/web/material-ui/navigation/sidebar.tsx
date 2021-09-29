@@ -5,14 +5,14 @@ import { MenuRoute } from './navigation-interfaces';
 
 const FixedMenu = styled.nav<{ menuWidth?: number; $sticky?: boolean }>`
   position: ${props => (props.$sticky ? 'sticky' : 'fixed')};
-  top: ${props => props.theme.spacing(8)}px;
+  top: ${props => props.theme.spacing(8)};
   left: 0;
 
   width: ${props => props.menuWidth ?? 240}px;
   height: 100%;
 
-  padding-top: ${props => props.theme.spacing(4)}px;
-  padding-right: ${props => props.theme.spacing(2)}px;
+  padding-top: ${props => props.theme.spacing(4)};
+  padding-right: ${props => props.theme.spacing(2)};
 
   background-color: white;
   box-shadow: 3px 0px 6px rgb(0 0 0 / 30%);
