@@ -1,3 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/forbid-component-props */
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-param-reassign */
 import { FC } from 'react';
 import LazyLoad from 'react-lazyload';
 import * as React from 'react';
@@ -95,13 +99,13 @@ export const OptimizedImage: FC<OwnProps> = ({
   const imgStyle = { width, height, maxHeight };
   const imgComponent = (
     <picture
-      className={zoomOnHover ? `${className} optimized-image-zoom` : className}
+      className={zoomOnHover ? `${className ?? ''} optimized-image-zoom` : className}
       style={imgStyle}
     >
       {srcWebp != null && (
         <source srcSet={props.resize ? srcWebp.srcSet : srcWebp} type="image/webp" />
       )}
-      <source srcSet={props.resize ? src.srcSet : src} type={`image/${ext}`} />
+      <source srcSet={props.resize ? src.srcSet : src} type={`image/${ext ?? ''}`} />
       <img
         style={{ ...stylesImg }}
         src={props.resize ? src.src : src}

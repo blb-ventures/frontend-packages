@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BottomNavigation, BottomNavigationAction, Drawer, List } from '@mui/material';
 import { useRouter } from 'next/router';
 import { FC, useMemo, useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { SmartMenu } from './smart-menu';
 import { MenuRoute } from './navigation-interfaces';
 
@@ -72,6 +72,7 @@ export const BottomNav: FC<BottomNavProps> = ({ showLabel, hasShadow = true, rou
     if (route.subRoutes != null) {
       setSelectedSubRoutes(route.subRoutes);
     } else if (typeof window !== 'undefined' && route.external) {
+      // eslint-disable-next-line no-undef
       window.location = (route.url || '') as any;
     } else if (routes[newRoute].url) {
       push(routes[newRoute].url || '');
@@ -90,6 +91,7 @@ export const BottomNav: FC<BottomNavProps> = ({ showLabel, hasShadow = true, rou
             key={idx}
             icon={it.icon}
             label={showLabel ? it.label : undefined}
+            // eslint-disable-next-line react/jsx-handler-names
             onClick={it.onClick}
             showLabel
           />

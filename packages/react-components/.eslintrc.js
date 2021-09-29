@@ -10,7 +10,12 @@ module.exports = {
   env: { es6: true },
   extends: [
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'next/core-web-vitals',
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react-hooks/recommended',
     'prettier',
   ],
   parserOptions: {
@@ -21,7 +26,15 @@ module.exports = {
       objectLiteralDuplicateProperties: false,
     },
   },
-  plugins: ['@typescript-eslint', '@next/eslint-plugin-next', 'prettier'],
+  plugins: [
+    '@typescript-eslint',
+    '@next/eslint-plugin-next',
+    'prettier',
+    'react',
+    'import',
+    'jsx-a11y',
+    'react-hooks',
+  ],
   settings: {
     linkComponents: [{ name: 'Link', linkAttribute: 'href' }],
     'import/extensions': allExtensions,
@@ -94,7 +107,7 @@ module.exports = {
       { selector: 'typeLike', format: ['PascalCase'] },
     ],
     '@typescript-eslint/comma-dangle': [
-      'error',
+      'off',
       {
         arrays: 'always-multiline',
         objects: 'always-multiline',
@@ -410,8 +423,6 @@ module.exports = {
     'import/no-self-import': 'error',
     'import/no-cycle': ['error', { maxDepth: '∞' }],
     'import/no-useless-path-segments': ['error', { commonjs: true }],
-    // Disabled because of stories and pages files
-    'import/no-unused-modules': ['off', { missingExports: true }],
     'import/no-relative-packages': 'error',
 
     // Style
@@ -779,6 +790,7 @@ module.exports = {
     'react/jsx-equals-spacing': ['error', 'never'],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/forbid-component-props': ['error', { forbid: ['style'] }],
+    'react/prop-types': 'off',
     'react/no-unused-prop-types': [
       'error',
       {

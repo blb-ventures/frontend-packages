@@ -6,7 +6,8 @@
       "jsx": "react",
       "resolveJsonModule": true,
       "strict": true,
-      "target": "ESNext"
+      "target": "ESNext",
+      "skipLibCheck": true
     },
     "include": ["src/**/*"],
   }

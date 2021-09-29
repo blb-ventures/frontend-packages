@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-undef */
 import * as React from 'react';
 import {
   Divider,
   Icon,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -11,11 +14,10 @@ import {
   ListProps,
 } from '@mui/material';
 import styled from '@emotion/styled';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { UndecoratedLink } from '@blb-ventures/react-components';
-import { MenuRoute } from './navigation-interfaces';
 import { FC, Fragment, MouseEvent, useMemo } from 'react';
+import { MenuRoute } from './navigation-interfaces';
 
 const StyledLinkListItem = styled(ListItem)`
   &[data-rounded='1'] {
@@ -47,22 +49,20 @@ export interface SmartMenuProps extends ListProps {
   afterClick?: () => any;
 }
 
-const handleScrollToEl = (
-  elId: string,
-  onClick?: (e: MouseEvent) => void,
-  afterClick?: (e: MouseEvent) => void
-) => (e: MouseEvent) => {
-  if (onClick) {
-    onClick(e);
-  }
-  const el = document.getElementById(elId);
-  if (el != null) {
-    window.scrollTo({ behavior: 'smooth', top: el.offsetTop - 80 });
-  }
-  if (afterClick) {
-    afterClick(e);
-  }
-};
+const handleScrollToEl =
+  (elId: string, onClick?: (e: MouseEvent) => void, afterClick?: (e: MouseEvent) => void) =>
+  (e: MouseEvent) => {
+    if (onClick) {
+      onClick(e);
+    }
+    const el = document.getElementById(elId);
+    if (el != null) {
+      window.scrollTo({ behavior: 'smooth', top: el.offsetTop - 80 });
+    }
+    if (afterClick) {
+      afterClick(e);
+    }
+  };
 
 export const SmartMenu: FC<SmartMenuProps> = ({
   hasDivider,
@@ -129,11 +129,11 @@ export const SmartMenu: FC<SmartMenuProps> = ({
         const linkedContent =
           it.url != null ? (
             // eslint-disable-next-line react/no-array-index-key
-            <Link key={idx} href={it.url} passHref>
-              <UndecoratedLink target={it.external ? '_blank' : undefined}>
+            <NextLink key={idx} href={it.url} passHref>
+              <Link underline="none" target={it.external ? '_blank' : undefined}>
                 {content}
-              </UndecoratedLink>
-            </Link>
+              </Link>
+            </NextLink>
           ) : (
             content
           );

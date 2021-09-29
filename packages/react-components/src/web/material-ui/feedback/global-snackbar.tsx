@@ -15,18 +15,21 @@ export class WebSnackbar {
   static showSnackbar(options: SnackbarOptions) {
     emitter.emit('show', options);
   }
+
   static showSuccessSnackbar(message: string, autoHideDuration?: number) {
     emitter.emit('show', { type: 'success', message, autoHideDuration });
   }
+
   static showInformationSnackbar(message: string, autoHideDuration?: number) {
     emitter.emit('show', { type: 'information', message, autoHideDuration });
   }
+
   static showDangerSnackbar(message: string, autoHideDuration?: number) {
     emitter.emit('show', { type: 'danger', message, autoHideDuration });
   }
 }
 
-export const GlobalSnackbar: React.FC = ({}) => {
+export const GlobalSnackbar: React.FC = () => {
   const [options, setOptions] = React.useState<any>(null);
 
   React.useEffect(() => {
