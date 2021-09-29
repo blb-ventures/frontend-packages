@@ -6,7 +6,7 @@
   "scripts": {
     "build": "bili",
     "test": "echo 1",
-    "lint": "eslint -c .eslintrc.js --fix --ext .ts --ext .tsx ./src"
+    "lint": "tsc --noEmit --project tsconfig.json && next lint"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
