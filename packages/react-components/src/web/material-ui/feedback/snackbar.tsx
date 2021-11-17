@@ -12,7 +12,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import * as React from 'react';
 
 const SlideTransition = (props: TransitionProps) => {
-  return <Slide {...props} direction="up" />;
+  return <Slide {...(props as any)} direction="up" />;
 };
 
 type Status = 'default' | 'success' | 'information' | 'danger';
