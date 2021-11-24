@@ -17,7 +17,7 @@ const SlideTransition = (props: TransitionProps) => {
 
 type Status = 'default' | 'success' | 'information' | 'danger';
 
-interface OwnProps {
+export interface SnackbarProps {
   open: boolean;
   autoHideDuration?: number;
   message: string | React.ReactNode;
@@ -47,7 +47,7 @@ const snackIcon = {
 
 const anchor: SnackbarOrigin = { vertical: 'bottom', horizontal: 'center' };
 
-export const Snackbar: React.FC<OwnProps> = ({
+export const Snackbar: React.FC<SnackbarProps> = ({
   open,
   autoHideDuration = 5000,
   message,

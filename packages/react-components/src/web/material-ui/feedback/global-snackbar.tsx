@@ -1,7 +1,6 @@
 import * as React from 'react';
 import EventEmitter, { Emitter } from 'event-emitter';
-
-import { Snackbar } from './snackbar';
+import { Snackbar, SnackbarProps } from './snackbar';
 
 const emitter: Emitter = EventEmitter();
 
@@ -30,7 +29,7 @@ export class WebSnackbar {
 }
 
 export const GlobalSnackbar: React.FC = () => {
-  const [options, setOptions] = React.useState<any>(null);
+  const [options, setOptions] = React.useState<Partial<SnackbarProps> | null>(null);
 
   React.useEffect(() => {
     const onShow = (newOptions: any) => {
@@ -46,11 +45,12 @@ export const GlobalSnackbar: React.FC = () => {
   return (
     <Snackbar
       autoHideDuration={15000}
+      message=""
       {...options}
       open={Boolean(options)}
       onClose={() => {
         setOptions(null);
-        if (options.onClose) {
+        if (options?.onClose != null) {
           options.onClose();
         }
       }}
