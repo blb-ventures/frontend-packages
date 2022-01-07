@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import * as React from 'react';
 
 interface OwnProps {
+  className?: string;
   /** A flag that sets if the loading is shown */
   loading?: boolean;
   loadingMessage?: string;
@@ -33,11 +34,12 @@ const LoadingMessage = styled.div`
 
 /** A container with a loader inside */
 export const ContainerLoader: React.FC<OwnProps> = ({
+  className,
   children,
   loading = false,
   loadingMessage,
 }) => (
-  <Container>
+  <Container className={className}>
     {children}
     <Loader show={loading}>
       <CircularProgress />
