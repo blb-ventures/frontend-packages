@@ -378,6 +378,7 @@ module.exports = {
     'import/no-deprecated': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-amd': 'error',
+    'import/no-unresolved': 'off',
     'import/first': 'error',
     'import/no-duplicates': 'error',
     'import/order': ['error', { groups: [['builtin', 'external', 'internal']] }],
