@@ -2,11 +2,12 @@ import CircularProgress, { CircularProgressProps } from '@mui/material/CircularP
 import styled from '@emotion/styled';
 import * as React from 'react';
 
-interface ContainerLoaderProps extends CircularProgressProps {
+interface ContainerLoaderProps {
   className?: string;
   /** A flag that sets if the loading is shown */
   loading?: boolean;
   loadingMessage?: string;
+  circularProgressProps?: CircularProgressProps;
 }
 
 const Container = styled.div`
@@ -38,12 +39,12 @@ export const ContainerLoader: React.FC<ContainerLoaderProps> = ({
   children,
   loading = false,
   loadingMessage,
-  ...rest
+  circularProgressProps,
 }) => (
   <Container className={className}>
     {children}
     <Loader show={loading}>
-      <CircularProgress {...rest} />
+      <CircularProgress {...circularProgressProps} />
       {loadingMessage && <LoadingMessage>{loadingMessage}</LoadingMessage>}
     </Loader>
   </Container>
